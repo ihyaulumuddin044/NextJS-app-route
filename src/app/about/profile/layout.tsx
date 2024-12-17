@@ -7,6 +7,7 @@ export default function AboutLayout({children}: {children: React.ReactNode}) {
                 <li>home</li>
                 <li>about</li>
                 <li>outhers</li>
+                <li>coba</li>
             </ul>
         </nav>
         {children}

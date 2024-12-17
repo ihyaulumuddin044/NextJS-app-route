@@ -1,23 +1,41 @@
 "use client";
 import Link from "next/link";
+// import React from "react";
+// import React from "react";
 
 export default function LoginPage() {
+  const HendleLogin = (e: any) => {
+    e.preventDefault();
+    fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
+      },
+      body: JSON.stringify({
+        email: e.currentTarget.email.value,
+        password: e.currentTarget.password.value,
+      }),
+    });
+  };
   return (
     <>
       <div className="bg-white lg:w-4/12 md:6/12 w-10/12 m-auto my-10 shadow-md">
         <div className="py-8 px-8 rounded-xl">
-          <h1 className="font-medium text-2xl mt-3 text-center text-black">Login</h1>
-          <form action="" className="mt-6">
+          <h1 className="font-medium text-2xl mt-3 text-center text-black">
+            Login
+          </h1>
+          <form className="mt-6" onSubmit={(e) => HendleLogin(e)}>
             <div className="my-5 text-sm">
               <label htmlFor="email" className="block text-black">
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 autoFocus
                 id="email"
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full  text-black"
-                placeholder="Email"
+                placeholder="Example@email.com"
               />
             </div>
             <div className="my-5 text-sm">
@@ -68,7 +86,7 @@ export default function LoginPage() {
           </div>
 
           <p className="mt-12 text-xs text-center font-light text-gray-400">
-            Don{"'"}t have an account? 
+            Don{"'"}t have an account?
             <Link href="/register" className="text-black font-medium">
               Create One
             </Link>

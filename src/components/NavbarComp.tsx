@@ -58,7 +58,7 @@ export function NavbarComp() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -78,10 +78,10 @@ export function NavbarComp() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/about" title="About">
+                this to abuot page
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
+              <ListItem href="/about/profile" title="To AboutProfile">
                 How to install dependencies and structure your app.
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Typography">

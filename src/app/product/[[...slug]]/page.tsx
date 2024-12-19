@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 type DetailProductPageProps = {
   params: { slug: string[] };
@@ -6,8 +6,18 @@ type DetailProductPageProps = {
 
 async function getData() {
   // const res = await fetch("https://fakestoreapi.com/products");
-  const res = await fetch("http://localhost:3000/api/product");
-  if (!res.ok) throw new Error("Failed to fetch data");
+  const res = await fetch("http://localhost:3000/api/product", {
+    cache: "no-store",
+    next: {
+      tags: ["product"],
+    }
+
+    // { revalidate: 10 },
+  }
+  );
+  if (!res.ok){
+    throw new Error("Failed to fetch data");
+  } 
   return res.json();
 }
 
@@ -18,7 +28,7 @@ export default async function DetailProductPage(props: DetailProductPageProps) {
   return (
     <div>
       <h1 className="text-center text-2xl font-bold "> Product page</h1>
-      <div className="grid grid-cols-2 mt-5 gap-2">
+      <div className="grid grid-cols-4 mt-5 gap-2">
         {products.data.length > 0 &&
           products.data.map((item: any) => (
             <div key={item.id}>
